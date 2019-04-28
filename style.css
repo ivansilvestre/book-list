@@ -1,0 +1,18 @@
+.head {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0;
+}
+
+.head h1{
+    margin: 0;
+    font-size: 3rem;
+}
+
+.form-container{
+    padding: 0 15%;
+}
+
+.table-hover{
+    margin-top: 2rem;
+}
