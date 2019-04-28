@@ -1,4 +1,5 @@
 class Book {
+
     constructor(title, author, publisher) {
         this.title = title;
         this.author = author;
@@ -7,6 +8,7 @@ class Book {
 }
 
 class UI {
+
     static displayBooks() {
         const books = Store.getBooks();
         books.forEach((book) => UI.addBookToList(book));
@@ -20,7 +22,7 @@ class UI {
         <td>${book.title}</td>
         <td>${book.author}</td>
         <td>${book.publisher}</td>
-        <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>`;
+        <td class="delete-btn"><a href="#" class="btn btn-danger btn-sm delete">X</a></td>`;
         list.appendChild(row);
     }
 
@@ -38,6 +40,7 @@ class UI {
 }
 
 class Store {
+
     static getBooks() {
         let books;
         if (localStorage.getItem('books') === null) {
@@ -54,20 +57,15 @@ class Store {
         localStorage.setItem('books', JSON.stringify(books));
     }
 
-    static removeBook(title) {
-        const books = Store.getBooks();
 
-        books.forEach((book, index) => {
-            console.log(book.title)
-            console.log(title)
-            if (book.title === title) {
-                books.splice(index, 1);
-            }
-        });
-        localStorage.setItem('books', JSON.stringify(books));
-    }
+    /*    static removeBook(title) {
+           const books = Store.getBooks();
+           books.forEach((book, index) => {
+                   books.splice(index, 1);
+           });
+           localStorage.setItem('books', JSON.stringify(books));
+       } */
 }
-
 
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 document.querySelector('#book-form').addEventListener('submit', (e) => {
@@ -85,5 +83,5 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 document.querySelector('#book-list').addEventListener('click', (e) => {
     UI.deleteBook(e.target);
-    Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
+    //Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
 });
