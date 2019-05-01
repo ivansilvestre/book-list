@@ -10,7 +10,8 @@ class Book {
 class UI {
 
     static displayBooks() {
-        const books = Store.getBooks();
+        const books = Store.getBooks()
+
         books.forEach((book) => UI.addBookToList(book));
     }
 
@@ -23,6 +24,7 @@ class UI {
         <td>${book.author}</td>
         <td>${book.publisher}</td>
         <td class="delete-btn"><a href="#" class="btn btn-danger btn-sm delete">X</a></td>`;
+
         list.appendChild(row);
     }
 
@@ -43,17 +45,18 @@ class Store {
 
     static getBooks() {
         let books;
-        if (localStorage.getItem('books') === null) {
-            books = [];
-        } else {
-            books = JSON.parse(localStorage.getItem('books'));
-        }
+        const getBooks = localStorage.getItem('books');
+
+        getBooks === null ? books = [] : books = JSON.parse(localStorage.getItem('books'));
+
         return books;
     }
 
     static addBook(book) {
         const books = Store.getBooks();
+
         books.push(book);
+
         localStorage.setItem('books', JSON.stringify(books));
     }
 
@@ -71,6 +74,7 @@ class Store {
 }
 
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
+
 document.querySelector('#book-form').addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -79,6 +83,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
     const publisher = document.querySelector('#publisher').value;
 
     const book = new Book(title, author, publisher);
+
     UI.addBookToList(book);
     Store.addBook(book);
     UI.clearFields();
