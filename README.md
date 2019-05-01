@@ -1,8 +1,8 @@
-#A simple book list in JavaScript,HTML/CSS and Bootstrap.
+A simple book list in JavaScript,HTML/CSS and Bootstrap.
 
-###Based on Brad Traversy's book list but with a few changes (by me).
+Based on Brad Traversy's book list but with a few changes (by me).
 
-####Changes:
+Changes:
 
 - visual;
 - some logic stuff;
