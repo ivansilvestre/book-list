@@ -57,14 +57,17 @@ class Store {
         localStorage.setItem('books', JSON.stringify(books));
     }
 
+    static removeBook(title) {
+        const books = Store.getBooks();
 
-    /*    static removeBook(title) {
-           const books = Store.getBooks();
-           books.forEach((book, index) => {
-                   books.splice(index, 1);
-           });
-           localStorage.setItem('books', JSON.stringify(books));
-       } */
+        books.forEach((book, index) => {
+            if (book.title === title) {
+                books.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem('books', JSON.stringify(books));
+    }
 }
 
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
@@ -83,5 +86,5 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 document.querySelector('#book-list').addEventListener('click', (e) => {
     UI.deleteBook(e.target);
-    //Store.removeBook(e.target.parentElement.previousElementSibling.textContent);
+    Store.removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
 });
