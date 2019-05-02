@@ -1,4 +1,6 @@
-body{
+/* need !important to override bootstrap stuff */
+
+body {
     max-width: 1024px;
     margin: 0 auto !important;
 }
@@ -31,4 +33,8 @@ input[type="submit"] {
 
 table td.delete-btn {
     padding-top: 0.4rem;
+}
+
+.table td {
+    vertical-align: middle !important;
 }
