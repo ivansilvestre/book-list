@@ -6,9 +6,11 @@ Changes:
 
 - visual;
 - add some extra logic stuff {
+    v1:
     - delete by title,
     - responsive desktop, 
     - required fields,
+    v2:
     - delete all books from list
 }
 
