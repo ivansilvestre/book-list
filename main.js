@@ -1,5 +1,4 @@
 class Book {
-
     constructor(title, author, publisher) {
         this.title = title;
         this.author = author;
@@ -8,7 +7,6 @@ class Book {
 }
 
 class UI {
-
     static displayBooks() {
         const books = Store.getBooks()
 
@@ -19,6 +17,7 @@ class UI {
         const list = document.querySelector('#book-list');
         const row = document.createElement('tr');
 
+        row.classList.add('book-active');
         row.innerHTML = `
         <td>${book.title}</td>
         <td>${book.author}</td>
@@ -42,7 +41,6 @@ class UI {
 }
 
 class Store {
-
     static getBooks() {
         let books;
         const getBooks = localStorage.getItem('books');
@@ -77,11 +75,9 @@ document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 document.querySelector('#book-form').addEventListener('submit', (e) => {
     e.preventDefault();
-
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const publisher = document.querySelector('#publisher').value;
-
     const book = new Book(title, author, publisher);
 
     UI.addBookToList(book);
@@ -93,3 +89,10 @@ document.querySelector('#book-list').addEventListener('click', (e) => {
     UI.deleteBook(e.target);
     Store.removeBook(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
 });
+
+document.querySelector('#del-list-btn').addEventListener('click', function () {
+    const elem = document.getElementById("book-list");
+    elem.parentNode.removeChild(elem);
+
+    localStorage.removeItem('books');
+}); 

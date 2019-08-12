@@ -38,3 +38,21 @@ table td.delete-btn {
 .table td {
     vertical-align: middle !important;
 }
+
+#del-list-btn {
+    width: 20%;
+    float: right;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(220, 53, 69);
+    border-color: transparent;
+}
+
+#del-list-btn:hover {
+    background-color: #7f1a1a;
+    border-color: transparent;
+}
+
+#del-list-btn:focus {
+    box-shadow: none;
+}
