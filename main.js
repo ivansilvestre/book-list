@@ -110,14 +110,14 @@ function searchBook() {
 
         if (title || author || publisher) {
             const titleValue = title.textContent || title.innerText;
-            const authorValue2 = author.textContent || author.innerText;
-            const publisherValue3 = publisher.textContent || publisher.innerText;
+            const authorValue = author.textContent || author.innerText;
+            const publisherValue = publisher.textContent || publisher.innerText;
 
             if (titleValue.toUpperCase().indexOf(filter) > -1) {
                 books[i].style.display = "";
-            } else if (authorValue2.toUpperCase().indexOf(filter) > -1) {
+            } else if (authorValue.toUpperCase().indexOf(filter) > -1) {
                 books[i].style.display = "";
-            } else if (publisherValue3.toUpperCase().indexOf(filter) > -1) {
+            } else if (publisherValue.toUpperCase().indexOf(filter) > -1) {
                 books[i].style.display = "";
             } else {
                 books[i].style.display = "none";
