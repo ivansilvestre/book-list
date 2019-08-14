@@ -95,4 +95,33 @@ document.querySelector('#del-list-btn').addEventListener('click', function () {
     elem.parentNode.removeChild(elem);
 
     localStorage.removeItem('books');
-}); 
+});
+
+function searchBook() {
+    const input = document.getElementById("myInput");
+    const filter = input.value.toUpperCase();
+    const table = document.getElementById("book-list");
+    const books = table.getElementsByClassName("book-active");
+
+    for (i = 0; i < books.length; i++) {
+        const title = books[i].getElementsByTagName("td")[0];
+        const author = books[i].getElementsByTagName("td")[1];
+        const publisher = books[i].getElementsByTagName("td")[2];
+
+        if (title || author || publisher) {
+            const titleValue = title.textContent || title.innerText;
+            const authorValue2 = author.textContent || author.innerText;
+            const publisherValue3 = publisher.textContent || publisher.innerText;
+
+            if (titleValue.toUpperCase().indexOf(filter) > -1) {
+                books[i].style.display = "";
+            } else if (authorValue2.toUpperCase().indexOf(filter) > -1) {
+                books[i].style.display = "";
+            } else if (publisherValue3.toUpperCase().indexOf(filter) > -1) {
+                books[i].style.display = "";
+            } else {
+                books[i].style.display = "none";
+            }
+        }
+    }
+}

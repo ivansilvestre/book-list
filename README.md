@@ -2,20 +2,23 @@ A simple book list in JavaScript,HTML/CSS and Bootstrap.
 
 Based on Brad Traversy's book list but with a few changes (by me).
 
-Changes:
+My changes:
 
 - visual;
 - add some extra logic stuff {
     v1:
     - delete by title,
     - responsive desktop, 
-    - required fields,
+    - required fields
+
     v2:
     - delete all books from list
+
+    v3:
+    - filter by title, author and publisher
 }
 
 - to do {
-    - filter by title, author and publisher (on list)
     - owned, to buy tag
     - ,etc
 }
