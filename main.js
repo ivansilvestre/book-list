@@ -1,3 +1,7 @@
+const input = document.getElementById("myInput");
+const table = document.getElementById("book-list");
+const books = table.getElementsByClassName("book-active");
+
 class Book {
     constructor(title, author, publisher) {
         this.title = title;
@@ -98,10 +102,7 @@ document.querySelector('#del-list-btn').addEventListener('click', function () {
 });
 
 function searchBook() {
-    const input = document.getElementById("myInput");
     const filter = input.value.toUpperCase();
-    const table = document.getElementById("book-list");
-    const books = table.getElementsByClassName("book-active");
 
     for (i = 0; i < books.length; i++) {
         const title = books[i].getElementsByTagName("td")[0];
@@ -113,11 +114,7 @@ function searchBook() {
             const authorValue = author.textContent || author.innerText;
             const publisherValue = publisher.textContent || publisher.innerText;
 
-            if (titleValue.toUpperCase().indexOf(filter) > -1) {
-                books[i].style.display = "";
-            } else if (authorValue.toUpperCase().indexOf(filter) > -1) {
-                books[i].style.display = "";
-            } else if (publisherValue.toUpperCase().indexOf(filter) > -1) {
+            if (filterBook(titleValue, filter) || filterBook(authorValue, filter) || filterBook(publisherValue, filter)) {
                 books[i].style.display = "";
             } else {
                 books[i].style.display = "none";
@@ -125,3 +122,8 @@ function searchBook() {
         }
     }
 }
+
+const filterBook = (param, filter) => {
+    return param.toUpperCase().indexOf(filter) > -1
+};
+
