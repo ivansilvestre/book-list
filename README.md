@@ -1,6 +1,8 @@
 Book list in JavaScript, HTML/CSS and Bootstrap.
+(based on Brad Traversy's book list app but with a few changes by me)
 
-Based on Brad Traversy's book list but with a few changes (by me).
+App here:
+https://wonderful-clarke-f17462.netlify.app/
 
 My changes:
 
@@ -20,7 +22,4 @@ My changes:
 
   }
 
-- to do { - owned, to buy tag - ,etc
-  }
-
-![book list print screen](utils/ps.png)
+- TODO: owned tag, to buy tag,etc
