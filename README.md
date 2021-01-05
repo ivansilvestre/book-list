@@ -2,7 +2,7 @@ Book list in JavaScript, HTML/CSS and Bootstrap.
 (based on Brad Traversy's book list app but with a few changes by me)
 
 App here:
-https://wonderful-clarke-f17462.netlify.app/
+https://i-book-list.netlify.app
 
 My changes:
 
