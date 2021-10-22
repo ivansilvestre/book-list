@@ -1,5 +1,5 @@
 Book list in JavaScript, HTML/CSS and Bootstrap.
-(based on Brad Traversy's book list app but with a few changes by me)
+( based on Brad Traversy's book list app but with a few changes by me )
 
 App here:
 https://i-book-list.netlify.app
