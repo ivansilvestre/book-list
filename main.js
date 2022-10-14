@@ -1,6 +1,6 @@
 const input = document.getElementById("myInput");
-const table = document.getElementById("book-list");
-const books = table.getElementsByClassName("book-active");
+const bookList = document.getElementById("book-list");
+const books = bookList.getElementsByClassName("book-active");
 const deleteBtn = document.getElementById("del-list-btn");
 
 class Book {
@@ -19,7 +19,6 @@ class UI {
   }
 
   static addBookToList(book) {
-    const list = document.querySelector("#book-list");
     const row = document.createElement("tr");
 
     row.classList.add("book-active");
@@ -28,8 +27,7 @@ class UI {
         <td>${book.author}</td>
         <td>${book.publisher}</td>
         <td class="delete-btn"><a href="#" class="btn btn-danger btn-sm delete">X</a></td>`;
-
-    list.appendChild(row);
+    bookList.appendChild(row);
   }
 
   static deleteBook(el) {
@@ -50,10 +48,11 @@ class Store {
     let books;
     const getBooks = localStorage.getItem("books");
 
-    getBooks === null
+    !getBooks
       ? (books = [])
       : (books = JSON.parse(localStorage.getItem("books")));
 
+    !books.length && (deleteBtn.disabled = true);
     return books;
   }
 
@@ -61,6 +60,7 @@ class Store {
     const books = Store.getBooks();
 
     books.push(book);
+    deleteBtn.disabled = false;
     localStorage.setItem("books", JSON.stringify(books));
   }
 
@@ -68,11 +68,10 @@ class Store {
     const books = Store.getBooks();
 
     books.forEach((book, index) => {
-      if (book.title === title) {
-        books.splice(index, 1);
-      }
+      book.title === title && books.splice(index, 1);
     });
 
+    books.length === 0 && (deleteBtn.disabled = true);
     localStorage.setItem("books", JSON.stringify(books));
   }
 }
@@ -91,7 +90,7 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   UI.clearFields();
 });
 
-document.querySelector("#book-list").addEventListener("click", (e) => {
+bookList.addEventListener("click", (e) => {
   UI.deleteBook(e.target);
   Store.removeBook(
     e.target.parentElement.previousElementSibling.previousElementSibling
@@ -100,7 +99,7 @@ document.querySelector("#book-list").addEventListener("click", (e) => {
 });
 
 deleteBtn.addEventListener("click", function () {
-  table.parentNode.removeChild(table);
+  bookList.parentNode.removeChild(bookList);
   deleteBtn.disabled = true;
   localStorage.removeItem("books");
 });
